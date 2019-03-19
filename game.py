@@ -335,3 +335,16 @@ def actions():
     print('What would you like to do?')
     action = input('>')
     acceptable_actions = ['travel','move','walk','quit','interact','examine','inspect',]
+def players_movement(myaction):
+    question = 'where would you like to move?'
+    print(question)
+    destination = input('>').lower()
+    if destination == ['up','north']:
+        current_destination = area_map[myplayer.location][up]
+        
+    elif destination == ['down','south']:
+        current_destination = area_map[myplayer.location][down]
+    elif destination == ['left','west']:
+        current_destination = area_map[myplayer.location][left]
+    elif destination == ['right','west']:
+        current_destination = area_map[myplayer.location][right]
