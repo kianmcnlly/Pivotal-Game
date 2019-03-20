@@ -1,5 +1,6 @@
 import os
-
+import sys
+import time
 def help_menu():
     print('hi')
 def start_game():
@@ -17,12 +18,12 @@ def options():
     options_choice()
 
 def options_menu():
-  print("##########################")
-  print("   Welcome to Mikado      ")
-  print("##########################")
-  print("          ·Play·          ")
-  print("          ·Help·          ")
-  print("          ·Quit·          ")
+  print("#################################################")
+  print("                Welcome to Mikado                ")
+  print("#################################################")
+  print("                     ·Play·                      ")
+  print("                     ·Help·                      ")
+  print("                     ·Quit·                      ")
   options()
 options_menu()
 class player():
@@ -1488,18 +1489,45 @@ def print_location():
 def actions():
     print('-------------------------------------')
     print('What would you like to do?')
-    action = input('>')
-    acceptable_actions = ['travel','move','walk','quit','interact','examine','inspect',]
+    action = input('>').lower
+    acceptable_actions = ['travel','move','walk','quit','interact','examine','inspect','go','look']
+    while action not in acceptable_actions:
+        unexacutable_action = ("I can't do that...")
+        for character in unexacutable_action:
+            sys.stdout.write(character)
+            sys.stdout.flush()
+            time.sleep(0.039)
+    if action == 'quit':
+        os.system('clear')
+    elif action == ['move','go','travel','walk']:
+        players_movement(action)
+    elif action == ['interact','examine','inspect','look']:
+        player.examine(action)
 def players_movement(myaction):
     question = 'where would you like to move?'
     print(question)
     destination = input('>').lower()
     if destination == ['up','north']:
         current_destination = area_map[myplayer.location][up]
-
     elif destination == ['down','south']:
         current_destination = area_map[myplayer.location][down]
     elif destination == ['left','west']:
         current_destination = area_map[myplayer.location][left]
     elif destination == ['right','west']:
         current_destination = area_map[myplayer.location][right]
+def movement_controller():
+    players_current_location = ("\n" + 'I am now in' + destination + '...')
+    for character in players_current_location:
+        sys.stdout.write(character)
+        sys.stdout.flush()
+        time.sleep(0.039)
+    print_location()
+def player_examine():
+    print('hi')
+variable = input('what is your name?')
+for character in variable:
+  sys.stdout.write(character)
+  sys.stdout.flush()
+  time.sleep(0.049)
+player_name = variable
+# myplayer.name = player_name
