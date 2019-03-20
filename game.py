@@ -18,20 +18,67 @@ def options():
     options_choice()
 
 def options_menu():
-  print("#################################################")
-  print("                Welcome to Mikado                ")
-  print("#################################################")
-  print("                     ·Play·                      ")
-  print("                     ·Help·                      ")
-  print("                     ·Quit·                      ")
-  options()
-options_menu()
+    os.system('cls')
+    print("#################################################")
+    print("                Welcome to Mikado                ")
+    print("#################################################")
+    print("                     ·Play·                      ")
+    print("                     ·Help·                      ")
+    print("                     ·Quit·                      ")
+    options()
 class player():
     def within(self):
         self.name = ''
         self.hp = 100
         self.status = []
+        self.game_over = False
     mycharacter = player()
+solved_areas = {
+       floor1: {'a1': False, 'a2': False, 'a3': False, 'a4': False, 'a5': False, 'a6': False, 'a7': False,
+                'b1': False, 'b2': False, 'b3': False, 'b4': False, 'b5': False, 'b6': False, 'b7': False,
+                'c1': False, 'c2': False, 'c3': False, 'c4': False, 'c5': False, 'c6': False, 'c7': False,
+                'd1': False, 'd2': False, 'd3': False, 'd4': False, 'd5': False, 'd6': False, 'd7': False,
+                'e1': False, 'e2': False, 'e3': False, 'e4': False, 'e5': False, 'e6': False, 'e7': False,
+                'f1': False, 'f2': False, 'f3': False, 'f4': False, 'f5': False, 'f6': False, 'f7': False,
+                'g1': False, 'g2': False, 'g3': False, 'g4': False, 'g5': False, 'g6': False, 'g7': False,
+                'h1': False, 'h2': False, 'h3': False, 'h4': False, 'h5': False, 'h6': False, 'h7': False,
+                },
+        floor2: {'a1': False, 'a2': False, 'a3': False, 'a4': False, 'a5': False, 'a6': False, 'a7': False,
+                'b1': False, 'b2': False, 'b3': False, 'b4': False, 'b5': False, 'b6': False, 'b7': False,
+                'c1': False, 'c2': False, 'c3': False, 'c4': False, 'c5': False, 'c6': False, 'c7': False,
+                'd1': False, 'd2': False, 'd3': False, 'd4': False, 'd5': False, 'd6': False, 'd7': False,
+                'e1': False, 'e2': False, 'e3': False, 'e4': False, 'e5': False, 'e6': False, 'e7': False,
+                'f1': False, 'f2': False, 'f3': False, 'f4': False, 'f5': False, 'f6': False, 'f7': False,
+                'g1': False, 'g2': False, 'g3': False, 'g4': False, 'g5': False, 'g6': False, 'g7': False,
+                },
+        floor3: {'a1': False, 'a2': False, 'a3': False, 'a4': False, 'a5': False, 'a6': False, 'a7': False,
+                'b1': False, 'b2': False, 'b3': False, 'b4': False, 'b5': False, 'b6': False, 'b7': False,
+                'c1': False, 'c2': False, 'c3': False, 'c4': False, 'c5': False, 'c6': False, 'c7': False,
+                'd1': False, 'd2': False, 'd3': False, 'd4': False, 'd5': False, 'd6': False, 'd7': False,
+                'e1': False, 'e2': False, 'e3': False, 'e4': False, 'e5': False, 'e6': False, 'e7': False,
+                'f1': False, 'f2': False, 'f3': False, 'f4': False, 'f5': False, 'f6': False, 'f7': False,
+                'g1': False, 'g2': False, 'g3': False, 'g4': False, 'g5': False, 'g6': False, 'g7': False,
+                },
+        floor4: {'a1': False, 'a2': False, 'a3': False, 'a4': False, 'a5': False, 'a6': False, 'a7': False,
+                'b1': False, 'b2': False, 'b3': False, 'b4': False, 'b5': False, 'b6': False, 'b7': False,
+                'c1': False, 'c2': False, 'c3': False, 'c4': False, 'c5': False, 'c6': False, 'c7': False,
+                'd1': False, 'd2': False, 'd3': False, 'd4': False, 'd5': False, 'd6': False, 'd7': False,
+                'e1': False, 'e2': False, 'e3': False, 'e4': False, 'e5': False, 'e6': False, 'e7': False,
+                'f1': False, 'f2': False, 'f3': False, 'f4': False, 'f5': False, 'f6': False, 'f7': False,
+                'g1': False, 'g2': False, 'g3': False, 'g4': False, 'g5': False, 'g6': False, 'g7': False,
+                },
+        room_to_easter_egg: {'a1': False, 'a2': False, 'a3': False,
+                            'b1': False, 'b2': False, 'b3': False,
+                            'c1': False, 'c2': False, 'c3': False
+                            },
+        floor5: {'a1': False, 'a2': False, 'a3': False, 'a4': False, 'a5': False, 'a6': False, 'a7': False,
+                'b1': False, 'b2': False, 'b3': False, 'b4': False, 'b5': False, 'b6': False, 'b7': False,
+                'c1': False, 'c2': False, 'c3': False, 'c4': False, 'c5': False, 'c6': False, 'c7': False,
+                'd1': False, 'd2': False, 'd3': False, 'd4': False, 'd5': False, 'd6': False, 'd7': False,
+                'e1': False, 'e2': False, 'e3': False, 'e4': False, 'e5': False, 'e6': False, 'e7': False,
+                'f1': False, 'f2': False, 'f3': False, 'f4': False, 'f5': False, 'f6': False, 'f7': False,
+                'g1': False, 'g2': False, 'g3': False, 'g4': False, 'g5': False, 'g6': False, 'g7': False,
+                }
 def map():
     area_map = {
         floor1 :{
@@ -42,6 +89,7 @@ def map():
             right:  'b1',
             examine: '',
             description: '',
+            solved: False,
             },
             a2:{
             up: 'a1',
@@ -50,6 +98,7 @@ def map():
             right: 'b2',
             examine: '',
             description: '',
+            solved: False,
             },
             a3:{
             up: 'a2',
@@ -58,6 +107,7 @@ def map():
             right: '',
             examine: '',
             description: '',
+            solved: False,
             },
             a4:{
             up: 'a3',
@@ -66,6 +116,7 @@ def map():
             right: '',
             examine: '',
             description: '',
+            solved: False,
             },
             a5:{
             up: 'a4',
@@ -74,6 +125,7 @@ def map():
             right: 'b5',
             examine: '',
             description: '',
+            solved: False,
             },
             a7:{
             up: '',
@@ -82,6 +134,7 @@ def map():
             right: 'b7',
             examine: '',
             description: '',
+            solved: False,
             },
             b1:{
             up: '',
@@ -90,6 +143,7 @@ def map():
             right: '',
             examine: '',
             description: '',
+            solved: False,
             },
             b2:{
             up: 'b1',
@@ -98,6 +152,7 @@ def map():
             right: 'c2',
             examine: '',
             description: '',
+            solved: False,
             },
             b5:{
             up: '',
@@ -106,6 +161,7 @@ def map():
             right: '',
             examine: '',
             description: '',
+            solved: False,
             },
             b7:{
             up: '',
@@ -114,6 +170,7 @@ def map():
             right: 'c7',
             examine: '',
             description: '',
+            solved: False,
             },
             c2:{
             up: '',
@@ -122,6 +179,7 @@ def map():
             right: '',
             examine: '',
             description: '',
+            solved: False,
             },
             c3:{
             up: 'c2',
@@ -130,6 +188,7 @@ def map():
             right: 'd3',
             examine: '',
             description: '',
+            solved: False,
             },
             c7:{
             up: '',
@@ -138,6 +197,7 @@ def map():
             right: 'd7',
             examine: '',
             description: '',
+            solved: False,
             },
             d3:{
             up: '',
@@ -146,6 +206,7 @@ def map():
             right: '',
             examine: '',
             description: '',
+            solved: False,
             },
             d4:{
             up: 'd3',
@@ -154,6 +215,7 @@ def map():
             right: '',
             examine: '',
             description: '',
+            solved: False,
             },
             d5:{
             up: 'd4',
@@ -162,6 +224,7 @@ def map():
             right: '',
             examine: '',
             description: '',
+            solved: False,
             },
             d6:{
             up: 'd5',
@@ -170,6 +233,7 @@ def map():
             right: 'e6',
             examine: '',
             description: '',
+            solved: False,
             },
             d7:{
             up:  'd6',
@@ -178,6 +242,7 @@ def map():
             right: 'e7',
             examine: '',
             description: '',
+            solved: False,
             },
             e6:{
             up: '',
@@ -186,6 +251,7 @@ def map():
             right: 'f6',
             examine: '',
             description: '',
+            solved: False,
             },
             e7:{
             up: 'e6',
@@ -194,6 +260,7 @@ def map():
             right: 'f7',
             examine: '',
             description: '',
+            solved: False,
             },
             f1:{
             up: 'floor2[a2]',
@@ -202,6 +269,7 @@ def map():
             right: '',
             examine: '',
             description: '',
+            solved: False,
             },
             f2:{
             up: 'f1',
@@ -210,6 +278,7 @@ def map():
             right: '',
             examine: '',
             description: '',
+            solved: False,
             },
             f3:{
             up: 'f2',
@@ -218,6 +287,7 @@ def map():
             right: '',
             examine: '',
             description: '',
+            solved: False,
             },
             f4:{
             up: 'f3',
@@ -226,6 +296,7 @@ def map():
             right: '',
             examine: '',
             description: '',
+            solved: False,
             },
             f5:{
             up: 'f4',
@@ -234,6 +305,7 @@ def map():
             right: '',
             examine: '',
             description: '',
+            solved: False,
             },
             f6:{
             up: 'f5',
@@ -242,6 +314,7 @@ def map():
             right: 'g6',
             examine: '',
             description: '',
+            solved: False,
             },
             f7:{
             up: 'f6',
@@ -250,6 +323,7 @@ def map():
             right: 'g7',
             examine: '',
             description: '',
+            solved: False,
             },
             g6:{
             up: '',
@@ -258,6 +332,7 @@ def map():
             right: 'h6',
             examine: '',
             description: '',
+            solved: False,
             },
             g7:{
             up: 'g6',
@@ -266,6 +341,7 @@ def map():
             right: 'h7',
             examine: '',
             description: '',
+            solved: False,
             },
             h1:{
             up: '',
@@ -274,6 +350,7 @@ def map():
             right: '',
             examine: '',
             description: '',
+            solved: False,
             },
             h2:{
             up: 'h1',
@@ -282,6 +359,7 @@ def map():
             right: '',
             examine: '',
             description: '',
+            solved: False,
             },
             h3:{
             up: 'h2,',
@@ -290,6 +368,7 @@ def map():
             right: '',
             examine: '',
             description: '',
+            solved: False,
             },
             h4:{
             up: 'h3',
@@ -298,6 +377,7 @@ def map():
             right: '',
             examine: '',
             description: '',
+            solved: False,
             },
             h5:{
             up: 'h4',
@@ -306,6 +386,7 @@ def map():
             right: '',
             examine: '',
             description: '',
+            solved: False,
             },
             h6:{
             up: 'h5',
@@ -314,6 +395,7 @@ def map():
             right: '',
             examine: '',
             description: '',
+            solved: False,
             },
             h7:{
             up: 'h6',
@@ -322,6 +404,7 @@ def map():
             right: '',
             examine: '',
             description: '',
+            solved: False,
             }
         },
         floor2 :{
@@ -332,6 +415,7 @@ def map():
             right:  'b1',
             examine: '',
             description: '',
+            solved: False,
             },
             a2:{
             up: 'a1',
@@ -340,6 +424,7 @@ def map():
             right: 'b2',
             examine: '',
             description: '',
+            solved: False,
             },
             a4:{
             up: '',
@@ -348,6 +433,7 @@ def map():
             right: 'b4',
             examine: '',
             description: '',
+            solved: False,
             },
             a5:{
             up: 'a4',
@@ -356,6 +442,7 @@ def map():
             right: '',
             examine: '',
             description: '',
+            solved: False,
             },
             a6:{
             up: 'a5',
@@ -364,6 +451,7 @@ def map():
             right: 'b6',
             examine: '',
             description: '',
+            solved: False,
             },
             a7:{
             up: 'a6',
@@ -372,6 +460,7 @@ def map():
             right: 'b7',
             examine: '',
             description: '',
+            solved: False,
             },
             b1:{
             up: '',
@@ -379,7 +468,8 @@ def map():
             left: 'a1',
             right: 'c1',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             b2:{
             up: 'b1',
@@ -387,7 +477,8 @@ def map():
             left: 'a2',
             right: '',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             b4:{
             up: '',
@@ -395,7 +486,8 @@ def map():
             left: 'a4',
             right: 'c4',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             b6:{
             up: '',
@@ -403,7 +495,8 @@ def map():
             left: 'a6',
             right: '',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             b7:{
             up: 'b6',
@@ -411,7 +504,8 @@ def map():
             left: 'a7',
             right: 'c7',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             c1:{
             up: '',
@@ -419,7 +513,8 @@ def map():
             left: 'b1',
             right: 'd1',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             c3:{
             up: '',
@@ -427,7 +522,8 @@ def map():
             left: '',
             right: 'd3',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             c4:{
             up: 'c3',
@@ -435,7 +531,8 @@ def map():
             left: 'b4',
             right: '',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             c7:{
             up: '',
@@ -443,7 +540,8 @@ def map():
             left: 'b7',
             right: 'd7',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             d1:{
             up: '',
@@ -451,7 +549,8 @@ def map():
             left: 'c1',
             right: 'e1',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             d3:{
             up: '',
@@ -459,7 +558,8 @@ def map():
             left: 'c3',
             right: 'e3',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             d5:{
             up: '',
@@ -467,7 +567,8 @@ def map():
             left: '',
             right: 'e5',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             d6:{
             up: 'd5',
@@ -475,7 +576,8 @@ def map():
             left: '',
             right: 'e6',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             d7:{
             up:  'd6',
@@ -483,7 +585,8 @@ def map():
             left: 'c7',
             right: 'e7',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             e1:{
             up: '',
@@ -491,7 +594,8 @@ def map():
             left: 'd1',
             right: 'f1',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             e2:{
             up: 'e1',
@@ -499,7 +603,8 @@ def map():
             left: '',
             right: 'f2',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             e3:{
             up: 'e2',
@@ -507,7 +612,8 @@ def map():
             left: 'd3',
             right: 'f3',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             e5:{
             up: '',
@@ -515,7 +621,8 @@ def map():
             left: 'd5',
             right: 'f5',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             e6:{
             up: 'e5',
@@ -523,7 +630,8 @@ def map():
             left: 'd6',
             right: 'f6',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             e7:{
             up: 'e6',
@@ -531,7 +639,8 @@ def map():
             left: 'd7',
             right: 'f7',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             f1:{
             up: '',
@@ -539,7 +648,8 @@ def map():
             left: 'e1',
             right: 'g1',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             f2:{
             up: 'f1',
@@ -547,7 +657,8 @@ def map():
             left: 'e2',
             right: 'g2',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             f3:{
             up: 'f2',
@@ -555,7 +666,8 @@ def map():
             left: 'e3',
             right: 'g3',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             f5:{
             up: '',
@@ -563,7 +675,8 @@ def map():
             left: 'e5',
             right: 'g5',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             f6:{
             up: 'f5',
@@ -571,7 +684,8 @@ def map():
             left: 'e6',
             right: '',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             f7:{
             up: 'f6',
@@ -579,7 +693,8 @@ def map():
             left: 'e7',
             right: '',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             g1:{
             up: '',
@@ -587,7 +702,8 @@ def map():
             left: 'f1',
             right: '',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             g2:{
             up: 'g1',
@@ -595,7 +711,8 @@ def map():
             left: 'f2',
             right: '',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             g3:{
             up: 'g2',
@@ -603,7 +720,8 @@ def map():
             left: 'f3',
             right: '',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             g5:{
             up: '',
@@ -611,7 +729,8 @@ def map():
             left: 'f5',
             right: 'floor3[d4]',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             }
         },
         floor3 :{
@@ -621,7 +740,8 @@ def map():
             left: '',
             right:  'b1',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             a2:{
             up: 'a1',
@@ -629,7 +749,8 @@ def map():
             left: '' ,
             right: 'b2',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             a3:{
             up: 'a2',
@@ -637,7 +758,8 @@ def map():
             left: '',
             right: 'b3',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             a6:{
             up: 'a',
@@ -645,7 +767,8 @@ def map():
             left: '',
             right: 'b6',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             a7:{
             up: 'a6',
@@ -653,7 +776,8 @@ def map():
             left: '',
             right: 'b7',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             b1:{
             up: '',
@@ -661,7 +785,8 @@ def map():
             left: 'a1',
             right: 'c1',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             b2:{
             up: 'b1',
@@ -669,7 +794,8 @@ def map():
             left: 'a2',
             right: 'c2',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             b3:{
             up: 'b2',
@@ -677,7 +803,8 @@ def map():
             left: 'a3',
             right: '',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             b6:{
             up: '',
@@ -685,7 +812,8 @@ def map():
             left: 'a6',
             right: '',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             b7:{
             up: 'b6',
@@ -693,7 +821,8 @@ def map():
             left: 'a7',
             right: 'c7',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             c1:{
             up: '',
@@ -701,7 +830,8 @@ def map():
             left: 'b1',
             right: 'd1',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             c2:{
             up: 'c1',
@@ -709,7 +839,8 @@ def map():
             left: 'b2',
             right: 'd3',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             c7:{
             up: '',
@@ -717,7 +848,8 @@ def map():
             left: 'b7',
             right: 'd7',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             d1:{
             up: '',
@@ -725,7 +857,8 @@ def map():
             left: 'c1',
             right: 'e1',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             d2:{
             up: 'd1',
@@ -733,7 +866,8 @@ def map():
             left: 'c2',
             right: 'e2',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
 
             d3:{
@@ -742,7 +876,8 @@ def map():
             left: '',
             right: '',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             d4:{
             up: 'd3',
@@ -750,7 +885,8 @@ def map():
             left: '',
             right: '',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             d7:{
             up:  '',
@@ -758,7 +894,8 @@ def map():
             left: 'c7',
             right: 'e7',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             e1:{
             up: '',
@@ -766,7 +903,8 @@ def map():
             left: 'd1',
             right: 'f1',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             e2:{
             up: 'e1',
@@ -774,7 +912,8 @@ def map():
             left: 'd2',
             right: 'f2',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             e7:{
             up: '',
@@ -782,7 +921,8 @@ def map():
             left: 'd7',
             right: 'f7',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             f1:{
             up: '',
@@ -790,7 +930,8 @@ def map():
             left: 'e1',
             right: 'g1',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             f2:{
             up: 'f1',
@@ -798,7 +939,8 @@ def map():
             left: 'e2',
             right: 'g2',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             f4:{
             up: '',
@@ -814,7 +956,8 @@ def map():
             left: '',
             right: 'g6',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             f7:{
             up: 'f6',
@@ -822,7 +965,8 @@ def map():
             left: 'e7',
             right: 'g7',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             g1:{
             up: '',
@@ -830,7 +974,8 @@ def map():
             left: 'f1',
             right: '',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             g2:{
             up: 'g1',
@@ -838,7 +983,8 @@ def map():
             left: 'f2',
             right: '',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             g3:{
             up: 'g2',
@@ -846,7 +992,8 @@ def map():
             left: '',
             right: '',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             g4:{
             up: 'g3',
@@ -854,7 +1001,8 @@ def map():
             left: 'f4',
             right: '',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             g5:{
             up: 'g4',
@@ -862,7 +1010,8 @@ def map():
             left: '',
             right: '',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             g6:{
             up: 'g5',
@@ -870,7 +1019,8 @@ def map():
             left: 'f6',
             right: '',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             g7:{
             up: 'g6',
@@ -878,7 +1028,8 @@ def map():
             left: 'f7',
             right: '',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             }
         },
         floor4:{
@@ -888,7 +1039,8 @@ def map():
             left: '',
             right:  'b1',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             a2:{
             up: 'a1',
@@ -896,7 +1048,8 @@ def map():
             left: '' ,
             right: 'b2',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             a3:{
             up: 'a2',
@@ -904,15 +1057,17 @@ def map():
             left: '',
             right: 'b3',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             a4:{
             up: 'a3',
             down: 'a5',
-            left: '',
+            left: 'room_to_easter_egg[c2]',
             right: 'b4',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             a5:{
             up: 'a4',
@@ -920,7 +1075,8 @@ def map():
             left: '',
             right: 'b5',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             a6:{
             up: 'a5',
@@ -928,7 +1084,8 @@ def map():
             left: '',
             right: 'b6',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             a7:{
             up: 'a6',
@@ -936,7 +1093,8 @@ def map():
             left: '',
             right: 'b7',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             b1:{
             up: '',
@@ -944,7 +1102,8 @@ def map():
             left: 'a1',
             right: 'c1',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             b2:{
             up: 'b1',
@@ -952,7 +1111,8 @@ def map():
             left: 'a2',
             right: 'c2',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             b3:{
             up: 'b2',
@@ -960,7 +1120,8 @@ def map():
             left: 'a3',
             right: '',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             b4:{
             up: 'b3',
@@ -968,7 +1129,8 @@ def map():
             left: 'a4',
             right: 'c4',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             b5:{
             up: 'b4',
@@ -976,7 +1138,8 @@ def map():
             left: 'a5',
             right: '',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             b6:{
             up: 'b5',
@@ -984,7 +1147,8 @@ def map():
             left: 'a6',
             right: 'c6',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             b7:{
             up: 'b6',
@@ -992,7 +1156,8 @@ def map():
             left: 'a7',
             right: 'c7',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             c1:{
             up: '',
@@ -1000,7 +1165,8 @@ def map():
             left: 'b1',
             right: 'd1',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             c2:{
             up: 'c1',
@@ -1008,7 +1174,8 @@ def map():
             left: 'b2',
             right: 'd2',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             c4:{
             up: '',
@@ -1016,7 +1183,8 @@ def map():
             left: 'b4',
             right: 'd4',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             c6:{
             up: '',
@@ -1024,7 +1192,8 @@ def map():
             left: 'b6',
             right: 'd6',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             c7:{
             up: 'c6',
@@ -1032,7 +1201,8 @@ def map():
             left: 'b7',
             right: 'd7',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             d1:{
             up: '',
@@ -1040,7 +1210,8 @@ def map():
             left: 'c1',
             right: 'e1',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             d2:{
             up: 'd1',
@@ -1048,7 +1219,8 @@ def map():
             left: 'c2',
             right: 'e2',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             d3:{
             up: 'd2',
@@ -1056,7 +1228,8 @@ def map():
             left: '',
             right: '',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             d4:{
             up: 'd3',
@@ -1064,7 +1237,8 @@ def map():
             left: 'c4',
             right: 'e4',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             d5:{
             up: 'd4',
@@ -1072,7 +1246,8 @@ def map():
             left: '',
             right: '',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             d6:{
             up: 'd5',
@@ -1080,7 +1255,8 @@ def map():
             left: 'c6',
             right: 'e6',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             d7:{
             up:  'd6',
@@ -1088,7 +1264,8 @@ def map():
             left: 'c7',
             right: 'e7',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             e1:{
             up: '',
@@ -1096,7 +1273,8 @@ def map():
             left: 'd1',
             right: 'f1',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             e2:{
             up: 'e1',
@@ -1104,7 +1282,8 @@ def map():
             left: 'd2',
             right: 'f2',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             e4:{
             up: '',
@@ -1112,7 +1291,8 @@ def map():
             left: 'd4',
             right: 'f4',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             e6:{
             up: '',
@@ -1120,7 +1300,8 @@ def map():
             left: 'd6',
             right: 'f6',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             e7:{
             up: 'e6',
@@ -1128,7 +1309,8 @@ def map():
             left: 'd7',
             right: 'g7',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             f1:{
             up: '',
@@ -1136,7 +1318,8 @@ def map():
             left: 'e1',
             right: 'g1',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             f2:{
             up: 'f1',
@@ -1144,7 +1327,8 @@ def map():
             left: 'e2',
             right: 'g2',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             f3:{
             up: 'f2',
@@ -1152,7 +1336,8 @@ def map():
             left: '',
             right: 'g3',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             f4:{
             up: 'f3',
@@ -1160,7 +1345,8 @@ def map():
             left:  'e4',
             right: 'g4',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             f5:{
             up: 'f4',
@@ -1168,7 +1354,8 @@ def map():
             left: 'the_end',
             right: 'g5',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             f6:{
             up: 'f5',
@@ -1176,7 +1363,8 @@ def map():
             left: 'e6',
             right: 'g6',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             f7:{
             up: 'f6',
@@ -1184,7 +1372,8 @@ def map():
             left: 'e7',
             right: 'g7',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             g1:{
             up: '',
@@ -1192,7 +1381,8 @@ def map():
             left: 'f1',
             right: '',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             g2:{
             up: 'g1',
@@ -1200,7 +1390,8 @@ def map():
             left: 'f2',
             right: '',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             g3:{
             up: 'g2',
@@ -1208,7 +1399,8 @@ def map():
             left: 'f3',
             right: '',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             g4:{
             up: 'g3',
@@ -1216,7 +1408,8 @@ def map():
             left: 'f5',
             right: '',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             g5:{
             up: 'g4',
@@ -1224,7 +1417,8 @@ def map():
             left: 'f5',
             right: '',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             g6:{
             up: 'g5',
@@ -1232,7 +1426,8 @@ def map():
             left: 'f7',
             right: '',
             examine: '',
-            description: '',
+            description:'',
+            solved: False,
             },
             g7:{
             up: 'g6',
@@ -1240,245 +1435,347 @@ def map():
             left: 'f7',
             right: '',
             examine: '',
+            description:'',
+            solved: False,
+            }
+        room_to_easter_egg:{
+            a1:{
+            up: '',
+            down: 'a2',
+            left: '',
+            right:  'b1',
+            examine: '',
             description: '',
+            solved: False,
+            },
+            a2:{
+            up: 'a1',
+            down: 'a3',
+            left: 'floor5[a1]' ,
+            right: 'b2',
+            examine: '',
+            description:'',
+            solved: False,
+            },
+            a3:{
+            up: 'a2',
+            down: '',
+            left: '' ,
+            right: 'b3',
+            examine: '',
+            description:'',
+            solved: False,
+            },
+            b1:{
+            up: '',
+            down: 'b2',
+            left: 'a1' ,
+            right: '',
+            examine: '',
+            description:'',
+            solved: False,
+            },
+            b2:{
+            up: 'b1',
+            down: 'b3',
+            left: 'a2' ,
+            right: 'c2',
+            examine: '',
+            description:'',
+            solved: False,
+            },
+            b3:{
+            up: 'b2',
+            down: '',
+            left: 'a3' ,
+            right: '',
+            examine: '',
+            description:'',
+            solved: False,
+            },
+            c2:{
+            up: '',
+            down: '',
+            left: 'b2' ,
+            right: '',
+            examine: '',
+            description:'',
+            solved: False,
+            },
+
+        },
+        floor5:{
+            a1:{
+            up: '',
+            down: 'a2',
+            left: '',
+            right:  '',
+            examine: '',
+            description:'',
+            solved: False,
+            },
+            a2:{
+            up: 'a1',
+            down: 'a3',
+            left: '' ,
+            right: '',
+            examine: '',
+            description:'',
+            solved: False,
+            },
+            a3:{
+            up: 'a2',
+            down: 'a4',
+            left: '',
+            right: '',
+            examine: '',
+            description:'',
+            solved: False,
+            },
+            a4:{
+            up: 'a3',
+            down: 'a5',
+            left: '',
+            right: 'b4',
+            examine: '',
+            description:'',
+            solved: False,
+            },
+            a5:{
+            up: 'a4',
+            down: 'a6',
+            left: '',
+            right: '',
+            examine: '',
+            description:'',
+            solved: False,
+            },
+            a6:{
+            up: 'a5',
+            down: 'a7',
+            left: '',
+            right: '',
+            examine: '',
+            description:'',
+            solved: False,
+            },
+            a7:{
+            up: 'a6',
+            down: '',
+            left: '',
+            right: '',
+            examine: '',
+            description:'',
+            solved: False,
+            },
+            b4:{
+            up: '',
+            down: '',
+            left: 'a4',
+            right: 'c4',
+            examine: '',
+            description:'',
+            solved: False,
+            },
+            c1:{
+            up: '',
+            down: 'c2',
+            left: '',
+            right: '',
+            examine: '',
+            description:'',
+            solved: False,
+            },
+            c2:{
+            up: 'c1',
+            down: 'c3',
+            left: '',
+            right: '',
+            examine: '',
+            description:'',
+            solved: False,
+            },
+            c3:{
+            up: 'c2',
+            down: 'c4',
+            left: '' ,
+            right: '',
+            examine: '',
+            description:'',
+            solved: False,
+            },
+            c4:{
+            up: 'c3',
+            down: 'c5',
+            left: 'b4',
+            right: 'd4',
+            examine: '',
+            description:'',
+            solved: False,
+            },
+            c5:{
+            up: 'c4',
+            down: 'c6',
+            left: '' ,
+            right: '',
+            examine: '',
+            description:'',
+            solved: False,
+            },
+            c6:{
+            up: 'c5',
+            down: 'c7',
+            left: '',
+            right: '',
+            examine: '',
+            description:'',
+            solved: False,
+            },
+            c7:{
+            up: 'c6',
+            down: '',
+            left: '',
+            right: '',
+            examine: '',
+            description:'',
+            solved: False,
+            },
+            d4:{
+            up: '',
+            down: '',
+            left: 'c4',
+            right: 'e4',
+            examine: '',
+            description:'',
+            solved: False,
+            },
+            e1:{
+            up: '',
+            down: 'e2',
+            left: '',
+            right: '',
+            examine: '',
+            description:'',
+            solved: False,
+            },
+            e2:{
+            up: 'e1',
+            down: 'e3',
+            left: '',
+            right: '',
+            examine: '',
+            description:'',
+            solved: False,
+            },
+            e4:{
+            up: 'e3',
+            down: 'e5',
+            left: 'd4',
+            right: 'f4',
+            examine: '',
+            description:'',
+            solved: False,
+            },
+            e5:{
+            up: 'e4',
+            down: 'e6',
+            left: '' ,
+            right: '',
+            examine: '',
+            description:'',
+            solved: False,
+            },
+            e6:{
+            up: 'e5',
+            down: 'e7',
+            left: '',
+            right: '',
+            examine: '',
+            description:'',
+            solved: False,
+            },
+            e7:{
+            up: 'e6',
+            down: '',
+            left: '',
+            right: '',
+            examine: '',
+            description:'',
+            solved: False,
+            },
+            f4:{
+            up: '',
+            down: '',
+            left:  'e4',
+            right: 'g4',
+            examine: '',
+            description:'',
+            solved: False,
+            },
+            g1:{
+            up: '',
+            down: 'g2',
+            left: '',
+            right: '',
+            examine: '',
+            description:'',
+            solved: False,
+            },
+            g2:{
+            up: 'g1',
+            down: 'g3',
+            left: '',
+            right: '',
+            examine: '',
+            description:'',
+            solved: False,
+            },
+            g3:{
+            up: 'g2',
+            down: 'g4',
+            left: '',
+            right: '',
+            examine: '',
+            description:'',
+            solved: False,
+            },
+            g4:{
+            up: 'g3',
+            down: 'g5',
+            left: 'f4',
+            right: '',
+            examine: '',
+            description:'',
+            solved: False,
+            },
+            g5:{
+            up: 'g4',
+            down: 'g6',
+            left: '',
+            right: '',
+            examine: '',
+            description:'',
+            solved: False,
+            },
+            g6:{
+            up: 'g5',
+            down: 'g7',
+            left: '',
+            right: '',
+            examine: '',
+            description:'',
+            solved: False,
+            },
+            g7:{
+            up: 'g6',
+            down: '',
+            left: '',
+            right: '',
+            examine: '',
+            description:'',
+            solved: False,
             }
         }
-# ############################################################################
-#         floor5 :{
-#             a1:{
-#             up: '',
-#             down: 'a2',
-#             left: '',
-#             right:  'b1',
-#             examine: '',
-#             description: '',
-#             },
-#             a2:{
-#             up: 'a1',
-#             down: 'a3',
-#             left: '' ,
-#             right: 'b2',
-#             examine: '',
-#             description: '',
-#             },
-#             a3:{
-#             up: 'a2',
-#             down: 'a4',
-#             left: '',
-#             right: '',
-#             examine: '',
-#             description: '',
-#             },
-#             a4:{
-#             up: 'a3',
-#             down: 'a5',
-#             left: '',
-#             right: '',
-#             examine: '',
-#             description: '',
-#             },
-#             a5:{
-#             up: 'a4',
-#             down: '',
-#             left: '',
-#             right: 'b5',
-#             examine: '',
-#             description: '',
-#             },
-#             a7:{
-#             up: '',
-#             down: '',
-#             left: '',
-#             right: 'b7',
-#             examine: '',
-#             description: '',
-#             },
-#             b1:{
-#             up: '',
-#             down: 'b2',
-#             left: 'a1',
-#             right: '',
-#             examine: '',
-#             description: '',
-#             },
-#             b2:{
-#             up: 'b1',
-#             down: '',
-#             left: 'a2',
-#             right: 'c2',
-#             examine: '',
-#             description: '',
-#             },
-#             b5:{
-#             up: '',
-#             down: '',
-#             left: 'a5',
-#             right: '',
-#             examine: '',
-#             description: '',
-#             },
-#             b7:{
-#             up: '',
-#             down: '',
-#             left: 'a7',
-#             right: 'c7',
-#             examine: '',
-#             description: '',
-#             },
-#             c2:{
-#             up: '',
-#             down: 'c3',
-#             left: 'b2',
-#             right: '',
-#             examine: '',
-#             description: '',
-#             },
-#             c3:{
-#             up: 'c2',
-#             down: '',
-#             left: '',
-#             right: 'd3',
-#             examine: '',
-#             description: '',
-#             },
-#             c7:{
-#             up: '',
-#             down: '',
-#             left: 'b7',
-#             right: 'd7',
-#             examine: '',
-#             description: '',
-#             },
-#             d3:{
-#             up: '',
-#             down: 'd4',
-#             left: 'c3',
-#             right: '',
-#             examine: '',
-#             description: '',
-#             },
-#             d4:{
-#             up: 'd3',
-#             down: 'd5',
-#             left: '',
-#             right: '',
-#             examine: '',
-#             description: '',
-#             },
-#             d5:{
-#             up: 'd4',
-#             down: 'd6',
-#             left: '',
-#             right: '',
-#             examine: '',
-#             description: '',
-#             },
-#             d6:{
-#             up: 'd5',
-#             down: 'd7',
-#             left: '',
-#             right: 'e6',
-#             examine: '',
-#             description: '',
-#             },
-#             d7:{
-#             up:  'd6',
-#             down: '',
-#             left: 'c7',
-#             right: 'e7',
-#             examine: '',
-#             description: '',
-#             },
-#             e6:{
-#             up: '',
-#             down: 'e7',
-#             left: 'd6',
-#             right: 'f6',
-#             examine: '',
-#             description: '',
-#             },
-#             e7:{
-#             up: 'e6',
-#             down: '',
-#             left: 'd7',
-#             right: 'g7',
-#             examine: '',
-#             description: '',
-#             },
-#             f1:{
-#             up: 'floor2',
-#             down: 'f2',
-#             left: '',
-#             right: '',
-#             examine: '',
-#             description: '',
-#             },
-#             f2:{
-#             up: 'f1',
-#             down: 'f3',
-#             left: '',
-#             right: '',
-#             examine: '',
-#             description: '',
-#             },
-#             f3:{
-#             up: 'f2',
-#             down: 'f4',
-#             left: '',
-#             right: '',
-#             examine: '',
-#             description: '',
-#             },
-#             f4:{
-#             up: 'f3',
-#             down: 'f5',
-#             left:  '',
-#             right: '',
-#             examine: '',
-#             description: '',
-#             },
-#             f5:{
-#             up: 'f4',
-#             down: 'f6',
-#             left: '',
-#             right: '',
-#             examine: '',
-#             description: '',
-#             },
-#             f6:{
-#             up: 'f5',
-#             down: 'f7',
-#             left: 'e6',
-#             right: 'g7',
-#             examine: '',
-#             description: '',
-#             },
-#             f7:{
-#             up: 'f6',
-#             down: '',
-#             left: 'e7',
-#             right: 'g7',
-#             examine: '',
-#             description: '',
-#             },
-#             g6:{
-#             up: '',
-#             down: 'g7',
-#             left: 'f6',
-#             right: 'h6',
-#             examine: '',
-#             description: '',
-#             },
-#             g7:{
-#             up: 'g6',
-#             down: '',
-#             left: 'f7',
-#             right: 'h7',
-#             examine: '',
-#             description: '',
-#             }
-# ##############################################################################
-
     }
 def print_location():
     print('\n' + ('#' * (4 + len(mycharacter.location))))
@@ -1522,12 +1819,24 @@ def movement_controller():
         sys.stdout.flush()
         time.sleep(0.039)
     print_location()
-def player_examine():
-    print('hi')
-variable = input('what is your name?')
-for character in variable:
-  sys.stdout.write(character)
-  sys.stdout.flush()
-  time.sleep(0.049)
-player_name = variable
-# myplayer.name = player_name
+def player_examine(action):
+    if :
+        dsc
+    else:
+        chess_lock
+def primary_game():
+    while myplayer.game_over  is not True:
+        actions()
+
+def game_structure():
+    os.system('cls')
+    name_question = input('what is your name?')
+    for character in name_question:
+      sys.stdout.write(character)
+      sys.stdout.flush()
+      time.sleep(0.049)
+    player_name = name_question
+    myplayer.name = player_name
+    os.system('cls')
+    primary_game()
+options_menu()
