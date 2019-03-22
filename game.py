@@ -74,6 +74,11 @@ solved_areas = {
                 'g1': True, 'g2': True, 'g3': True, 'g4': True, 'g5': True, 'g6': True, 'g7': True,
                 }
        }
+
+Jeffrey Collier
+                   Robert Toukmond
+                   Thomas Stock
+
 area_map = {
      'floor1' :{
          'a1':{
@@ -1919,14 +1924,14 @@ def actions():
     print('-------------------------------------')
     action = input('>').strip()
     if action == 'quit':
-        os.system('clear')
+        exit()
     elif action == 'move' or action == 'go' or action == 'travel' or action == 'walk':
         players_movement(action)
     elif action == 'interact' or action == 'examine' or action == 'inspect' or action  == 'look':
         player.examine(action)
     elif action == 'options':
             print('-------------------------------------')
-            possibly_lose_their_data_question = ('Are you sure?')
+            possibly_lose_their_data_question = ('Are you sure?','\n')
             possibly_lose_their_data_statement = ('This action will delete your data and you will have to start again...','\n')
             for character in possibly_lose_their_data_question:
                 sys.stdout.write(character)
@@ -1940,13 +1945,13 @@ def actions():
             possibly_lose_their_data_question_answer = input('>')
             if possibly_lose_their_data_question_answer == 'yes' or possibly_lose_their_data_question_answer == 'yh' or possibly_lose_their_data_question_answer == 'y':
                 options_menu()
-            else:
-                unexacutable_action = ("I can't do that...")
-                for character in unexacutable_action:
-                    sys.stdout.write(character)
-                    sys.stdout.flush()
-                    time.sleep(0.025)
-                actions()
+        else:
+            unexacutable_action = ("I can't do that...")
+            for character in unexacutable_action:
+                sys.stdout.write(character)
+                sys.stdout.flush()
+                time.sleep(0.025)
+            actions()
 def players_movement(myaction):
     question = 'where would you like to move?'
     print(question)
@@ -1984,4 +1989,4 @@ def game_structure():
 # def introduction():
 #     before_you_enter = ('')
 # introduction()
-game_structure
+game_structure()
